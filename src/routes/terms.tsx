@@ -8,12 +8,15 @@ const BODY_HTML = "<div class=\"tt-style-switch d-lg-flex d-none\">\n        <sp
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Artmart - Art & Archief HTML Template." },
-      { name: "description", content: "Artmart - Art & Archief HTML Template." },
-      { property: "og:title", content: "Artmart - Art & Archief HTML Template." },
-      { property: "og:description", content: "Artmart - Art & Archief HTML Template." },
+      { title: "Algemene voorwaarden — Prani Kulturu" },
+      { name: "description", content: "De voorwaarden voor het gebruik van de website en het gedeelde archief van Stichting Prani Kulturu." },
+      { property: "og:title", content: "Algemene voorwaarden — Prani Kulturu" },
+      { property: "og:description", content: "De voorwaarden voor het gebruik van de website en het gedeelde archief van Stichting Prani Kulturu." },
     ],
-    links: PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+    links: [
+      ...PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+      { rel: "canonical", href: "https://pranikulturu.org/terms" },
+    ],
   }),
   component: Page,
 });

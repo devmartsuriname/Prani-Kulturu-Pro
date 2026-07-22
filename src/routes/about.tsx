@@ -8,12 +8,15 @@ const BODY_HTML = "<div class=\"tt-style-switch d-lg-flex d-none\">\n        <sp
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
-      { name: "description", content: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
-      { property: "og:title", content: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
-      { property: "og:description", content: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
+      { title: "Over Prani Kulturu — missie en werkwijze" },
+      { name: "description", content: "Wie wij zijn, waar wij voor staan en hoe de redactie het gedeelde archief opbouwt, controleert en beheert." },
+      { property: "og:title", content: "Over Prani Kulturu — missie en werkwijze" },
+      { property: "og:description", content: "Wie wij zijn, waar wij voor staan en hoe de redactie het gedeelde archief opbouwt, controleert en beheert." },
     ],
-    links: PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+    links: [
+      ...PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+      { rel: "canonical", href: "https://pranikulturu.org/about" },
+    ],
   }),
   component: Page,
 });

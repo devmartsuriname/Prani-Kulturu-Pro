@@ -9,11 +9,14 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
-      { name: "description", content: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
+      { name: "description", content: "De digitale erfgoedhub van Stichting Prani Kulturu: records, makers, verhalen en agenda in één gedeeld archief." },
       { property: "og:title", content: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
-      { property: "og:description", content: "Prani Kulturu — Digitaal erfgoed uit Suriname" },
+      { property: "og:description", content: "De digitale erfgoedhub van Stichting Prani Kulturu: records, makers, verhalen en agenda in één gedeeld archief." },
     ],
-    links: PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+    links: [
+      ...PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+      { rel: "canonical", href: "https://pranikulturu.org/" },
+    ],
   }),
   component: Page,
 });

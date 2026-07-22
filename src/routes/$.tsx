@@ -15,7 +15,10 @@ export const Route = createFileRoute("/$")({
       { property: "og:title", content: "Pagina niet gevonden — Prani Kulturu" },
       { property: "og:description", content: "Deze pagina bestaat niet of is verplaatst." },
     ],
-    links: PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+    links: [
+      ...PAGE_CSS.map((href) => ({ rel: "stylesheet", href })),
+      { rel: "canonical", href: "https://pranikulturu.org/404" },
+    ],
   }),
   // De loader gooit notFound(), zodat de router de responsestatus op 404 zet.
   // De 404-presentatie zelf staat in notFoundComponent, binnen de ArtMart-shell.

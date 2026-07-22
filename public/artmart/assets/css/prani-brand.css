@@ -1,0 +1,241 @@
+/* ============================================================
+   Prani Kulturu — Brand Override (Round B)
+   Scoped under .artmart-scope so admin & shadcn tokens are untouched.
+   Sage Green primary + warm neutrals. No other colors, except the
+   standard validation red for form errors.
+   ============================================================ */
+
+:root,
+.artmart-scope {
+  --pk-primary: #6B8E6A;
+  --pk-primary-opc: 107, 142, 106;
+  --pk-canvas:  #FFFFFF;
+  --pk-surface: #F5F2EE;
+  --pk-border:  #E8E4DE;
+  --pk-muted:   #9E9589;
+  --pk-ink:     #2C2420;
+}
+
+/* Remap the ArtMart CSS variables inside our subtree only. */
+.artmart-scope {
+  --primary-color: var(--pk-primary);
+  --primary-color-opc: 107, 142, 106;
+  --dark-primary-color: var(--pk-primary);
+
+  --title-color: var(--pk-ink);
+  --title-color-opc: 44, 36, 32;
+  --dark-title-color: var(--pk-ink);
+
+  --text-color: var(--pk-ink);
+  --dark-text-color: var(--pk-ink);
+  --text-color2: var(--pk-muted);
+  --text-color-opc: 44, 36, 32;
+  --text-color-white: var(--pk-surface);
+
+  --border-color: var(--pk-border);
+  --border-color-opc: 232, 228, 222;
+
+  --section-bg-color: var(--pk-surface);
+  --section-bg-color2: var(--pk-surface);
+
+  --white-color: var(--pk-canvas);
+  --dark-white-color: var(--pk-canvas);
+
+  /* Interim typography — no webfont install this round */
+  --font-playfair: Georgia, "Times New Roman", serif;
+  --font-worksans: system-ui, -apple-system, "Noto Sans", Arial, sans-serif;
+  --font-montserrat: system-ui, -apple-system, "Noto Sans", Arial, sans-serif;
+}
+
+/* -------- Font-family scope -------- */
+.artmart-scope,
+.artmart-scope body,
+.artmart-scope p,
+.artmart-scope span,
+.artmart-scope a,
+.artmart-scope li,
+.artmart-scope button,
+.artmart-scope input,
+.artmart-scope textarea,
+.artmart-scope select,
+.artmart-scope label {
+  font-family: system-ui, -apple-system, "Noto Sans", Arial, sans-serif;
+}
+.artmart-scope h1,
+.artmart-scope h2,
+.artmart-scope h3,
+.artmart-scope h4,
+.artmart-scope h5,
+.artmart-scope h6,
+.artmart-scope .display-1,
+.artmart-scope .display-2,
+.artmart-scope .display-3,
+.artmart-scope .display-4,
+.artmart-scope .display-5,
+.artmart-scope .display-6 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* -------- Remap hard-coded template accents (bg-color: X) -------- */
+/* #EC6219 orange gradient stripe (2 hits) */
+.artmart-scope [style*="linear-gradient(90deg, #525252, #EC6219, #525252)"],
+.artmart-scope .breadcrumb-wrap .breadcrumb-title-wrap::after,
+.artmart-scope .breadcrumbs-section .breadcrumb-title-wrap::after {
+  background: linear-gradient(90deg, var(--pk-muted), var(--pk-primary), var(--pk-muted)) !important;
+}
+
+/* #A9671B and #30A86F flat backgrounds, #0ED678 fills/strokes,
+   #30A86F used as color — all become sage green. */
+.artmart-scope [style*="#A9671B"],
+.artmart-scope [style*="#30A86F"],
+.artmart-scope [style*="#0ED678"],
+.artmart-scope [style*="#EC6219"] {
+  background-color: var(--pk-primary) !important;
+  color: var(--pk-canvas) !important;
+}
+
+/* Broad SVG accent normalization inside the subtree */
+.artmart-scope svg [fill="#0ED678"],
+.artmart-scope svg [fill="#30A86F"],
+.artmart-scope svg [fill="#EC6219"],
+.artmart-scope svg [fill="#A9671B"] {
+  fill: var(--pk-primary) !important;
+}
+.artmart-scope svg [stroke="#0ED678"],
+.artmart-scope svg [stroke="#30A86F"],
+.artmart-scope svg [stroke="#EC6219"],
+.artmart-scope svg [stroke="#A9671B"] {
+  stroke: var(--pk-primary) !important;
+}
+
+/* Non-hex accent: gold rgba highlight in country dropdown */
+.artmart-scope .dashboard-profile-content .single-content .form-inner
+  .iti__country-list .iti__country.iti__highlight {
+  background-color: rgba(107, 142, 106, 0.18) !important;
+}
+
+/* red keyword on notify-modal close hover is decorative — remap to primary.
+   (Validation red on form fields stays untouched — no rule shadows it.) */
+.artmart-scope .notify-modal .modal-dialog .modal-content .modal-close i:hover {
+  background-color: var(--pk-primary) !important;
+  border-color: var(--pk-primary) !important;
+}
+
+/* -------- Common ArtMart component accents -------- */
+.artmart-scope .primary-btn1,
+.artmart-scope .primary-btn2,
+.artmart-scope .primary-btn3,
+.artmart-scope .primary-btn4,
+.artmart-scope .theme-btn,
+.artmart-scope .btn-primary {
+  background-color: var(--pk-primary);
+  border-color: var(--pk-primary);
+  color: var(--pk-canvas);
+}
+.artmart-scope .primary-btn1:hover,
+.artmart-scope .primary-btn2:hover,
+.artmart-scope .primary-btn3:hover,
+.artmart-scope .primary-btn4:hover,
+.artmart-scope .theme-btn:hover,
+.artmart-scope .btn-primary:hover {
+  background-color: var(--pk-ink);
+  border-color: var(--pk-ink);
+  color: var(--pk-canvas);
+}
+
+.artmart-scope a { color: var(--pk-ink); }
+.artmart-scope a:hover,
+.artmart-scope a:focus { color: var(--pk-primary); }
+
+/* Nav active + hover */
+.artmart-scope .main-menu ul li a:hover,
+.artmart-scope .main-menu ul li.active > a,
+.artmart-scope .main-menu ul li a.active {
+  color: var(--pk-primary);
+}
+
+/* Section titles / eyebrow accents */
+.artmart-scope .section-title span,
+.artmart-scope .section-title .subtitle,
+.artmart-scope .subtitle {
+  color: var(--pk-primary);
+}
+
+/* Badges, tags, chips, prices */
+.artmart-scope .badge,
+.artmart-scope .tag,
+.artmart-scope .price,
+.artmart-scope .current-bid,
+.artmart-scope .bid-amount {
+  color: var(--pk-primary);
+}
+
+/* Pagination active */
+.artmart-scope .pagination-area .page-item.active .page-link,
+.artmart-scope .pagination li.active a,
+.artmart-scope .page-item.active .page-link {
+  background-color: var(--pk-primary);
+  border-color: var(--pk-primary);
+  color: var(--pk-canvas);
+}
+
+/* Sliders — swiper + slick dots */
+.artmart-scope .swiper-pagination-bullet-active,
+.artmart-scope .slick-dots li.active button,
+.artmart-scope .slick-dots li.slick-active button::before {
+  background-color: var(--pk-primary);
+  color: var(--pk-primary);
+  opacity: 1;
+}
+
+/* Forms — focus + checkbox */
+.artmart-scope input:focus,
+.artmart-scope textarea:focus,
+.artmart-scope select:focus {
+  border-color: var(--pk-primary);
+}
+.artmart-scope input[type="checkbox"]:checked,
+.artmart-scope input[type="radio"]:checked {
+  accent-color: var(--pk-primary);
+}
+
+/* Counters + hero CTA + footer accent */
+.artmart-scope .counter-item .count,
+.artmart-scope .counter-item .odometer,
+.artmart-scope .counter-number,
+.artmart-scope .footer-widget a:hover {
+  color: var(--pk-primary);
+}
+
+/* Focus-visible ring across the subtree */
+.artmart-scope a:focus-visible,
+.artmart-scope button:focus-visible,
+.artmart-scope input:focus-visible,
+.artmart-scope textarea:focus-visible,
+.artmart-scope select:focus-visible,
+.artmart-scope [role="button"]:focus-visible {
+  outline: 2px solid var(--pk-primary);
+  outline-offset: 2px;
+}
+
+/* Respect reduced-motion — keep effects wired, just calm them visually */
+@media (prefers-reduced-motion: reduce) {
+  .artmart-scope *,
+  .artmart-scope *::before,
+  .artmart-scope *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .artmart-scope .marquee { animation: none !important; }
+}
+
+/* Round G.1 — keep the 7 top-level items on a single row across desktop widths */
+@media (min-width: 992px) {
+  .main-menu .menu-list { display: flex !important; flex-wrap: nowrap !important; gap: 22px; align-items: center; }
+  .main-menu .menu-list > li > a { white-space: nowrap; }
+}
+@media (min-width: 1400px) {
+  .main-menu .menu-list { gap: 32px; }
+}

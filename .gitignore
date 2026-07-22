@@ -1,0 +1,60 @@
+# ── Prani Kulturu Pro — .gitignore (Guardian Rules v2.2) ──
+# Principe: alleen broncode + essentiële repo-docs in git.
+# Governance-docs, Task Contracts en werkbestanden leven in
+# Devmart-Workspace / "Prani Kulturu Pro" (project folder), NIET in git.
+
+# Dependencies & build-output
+node_modules/
+dist/
+dist-ssr/
+.output/
+.vinxi/
+.tanstack/
+.nitro/
+.vite/
+coverage/
+*.local
+
+# Environment & secrets — NOOIT committen
+.env
+.env.*
+!.env.example
+
+# Lovable-metadata (herkomst-tooling, niet nodig in deze repo)
+.lovable/
+.agents/
+AGENTS.md
+
+# Tijdelijke scripts & scratch (rondes horen hun scripts op te ruimen)
+scripts/tmp/
+*.tmp
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun-debug.log*
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+
+# Editor & OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OneDrive conflictkopieën (repo staat in OneDrive — let op sync)
+*-DESKTOP-*.md
+* - Copy*

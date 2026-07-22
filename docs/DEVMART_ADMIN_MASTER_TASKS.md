@@ -66,6 +66,9 @@ Status legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
 ## Act 2 — Package as `devmart-admin` skill
 
+> **DEFERRED — Devmart-intern, buiten PK-scope (besluit D-17, 2026-07-22);
+> niet bouwen vanuit deze repo.**
+
 ### Phase 7 · Skill scaffold under `.agents/skills/devmart-admin/`
 - [ ] `SKILL.md` — trigger conditions, activation, page catalogue, CSS isolation contract
 - [ ] `assets/` — CSS/JS/fonts/img bundle + route template + layout template
@@ -91,7 +94,7 @@ public/admin/                      # 1:1 copy of Darkone dist assets
     images/                        # logos, avatars, small/*
 
 src/routes/
-  index.tsx                        # landing (link to /admin)
+  index.tsx                        # Prani Kulturu-home (publieke ArtMart-shell, geen admin-landing)
   admin.tsx                        # layout route: loads CSS/JS, .devmart-admin wrapper, <Outlet />
   admin/
     index.tsx                      # dashboard (Analytics)
@@ -122,7 +125,7 @@ docs/
   DEVMART_ADMIN_MASTER_TASKS.md    # THIS FILE — leidraad + checklist
   DEVMART_ADMIN_PAGES.md           # HTML → route mapping table
   DEVMART_ADMIN_CSS_ISOLATION.md   # scoping contract
-  DEVMART_ADMIN_LIBS.md            # vendor library catalogue
+  DEVMART_ADMIN_LIBRARY.md         # vendor library catalogue
 
 .agents/skills/devmart-admin/      # (Act 2) reusable skill package
   SKILL.md

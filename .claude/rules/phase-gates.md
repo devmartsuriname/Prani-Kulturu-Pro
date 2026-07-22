@@ -10,9 +10,17 @@
 | Fase | Inhoud | Task Contract |
 | --- | --- | --- |
 | **CUT-4b** | Devmart governance-laag in de repo: `CLAUDE.md` + `.claude/rules/`. Verplicht vóór elke code-wijziging. | TC-PK-002 |
-| **CUT-4c** | Fixes uit de audit doorvoeren in de repo. | TC-PK-003 |
-| **CUT-5** | Review + Codex her-audit + Delroy GO → **eerste push**. | Nieuwe TC |
+| **CUT-4c** | Fixes uit de Codex-audit doorvoeren in de repo. | TC-PK-003 |
+| **CUT-4d** | Repo-hygiëne: admin-docs geactualiseerd, Lovable-metadata verwijderd, `routeTree.gen.ts` vastgelegd. | TC-PK-004 |
+| **CUT-4e** | Frontend smoke- en content-audit + CMS-readiness-blauwdruk (report-only). | TC-PK-005 |
+| **CUT-4f** | Gebundelde frontend-fixronde: fix-lijst 1–20 uit `docs/prani-kulturu/13-frontend-audit.md`. | TC-PK-006 |
+| **CUT-5** | Cowork-review + Codex her-audit + Delroy GO → **eerste push**. | Nieuwe TC |
+| **CUT-6** | Admin-TC (fix 21–22, beschermd pad) en de EN-fase (6.2, terugkeer taalswitcher). | Nieuwe TC's |
 | **Backend/data** | MySQL-fase (Hostinger). Uitsluitend via nieuwe Task Contracts, per onderdeel. | Nieuwe TC's |
+
+Referentie voor de fasenummering: het projectmasterplan (Master v3.5) in
+`Prani Kulturu Pro/`. Bij afwijking tussen dit bestand en het masterplan geldt
+het masterplan; dit bestand wordt dan bijgewerkt via een eigen Task Contract.
 
 Volgorde is bindend. Fasen worden niet samengevoegd, overgeslagen of
 vooruitgelopen.
@@ -39,4 +47,6 @@ vooruitgelopen.
 
 ## Actieve fase
 
-**CUT-4b** — governance-laag. Volgende stap: wachten op Delroy voor TC-PK-003.
+**CUT-4f** — gebundelde frontend-fixronde (TC-PK-006). Volgende stap: Cowork-review
+en Codex her-audit (CUT-5); daarna Delroy's GO voor de eerste push. Tot die GO
+blijft `git push` verboden (gate-regel 2).

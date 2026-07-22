@@ -118,6 +118,17 @@ const SWIPER_CONFIGS: Array<[string, any]> = [
   }],
   [".auction-details-nav-slider", {
     slidesPerView: 1, speed: 1500, spaceBetween: 15, grabCursor: true,
+    autoplay: { delay: 2500, disableOnInteraction: false },
+    navigation: { nextEl: ".category-slider-next", prevEl: ".category-slider-prev" },
+    breakpoints: {
+      280: { slidesPerView: 2 },
+      350: { slidesPerView: 3, spaceBetween: 10 },
+      576: { slidesPerView: 4, spaceBetween: 15 },
+      768: { slidesPerView: 5 },
+      992: { slidesPerView: 5, spaceBetween: 15 },
+      1200: { slidesPerView: 5 },
+      1400: { slidesPerView: 5, spaceBetween: 35 },
+    },
   }],
   // Round E.1 addition — not in main.js; initialized by artmartInit only.
   [".home2-artist-slider", {

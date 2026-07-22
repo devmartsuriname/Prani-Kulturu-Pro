@@ -22,6 +22,9 @@ export const PAGE_CSS: string[] = [
 // Kept for compatibility with any external reader; route files no longer
 // consume PAGE_SCRIPTS directly — they call useArtmartInit() instead which
 // loads vendors + main.js exactly once per page lifetime.
+// Let op (TC-PK-006 WP6, fix 5): range-slider.js staat hier nog in de lijst als
+// documentatie van de oorspronkelijke ArtMart-scriptvolgorde, maar wordt door
+// artmartInit.ts alleen geladen wanneer zijn init-target #slider-range bestaat.
 export const PAGE_SCRIPTS: string[] = [
   "/artmart/assets/js/jquery-3.7.1.min.js",
   "/artmart/assets/js/popper.min.js",

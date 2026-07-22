@@ -17,6 +17,17 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+// range-slider.js (noUiSlider + eigen initializer) roept op DOMContentLoaded
+// noUiSlider.create(document.getElementById("slider-range")) aan. Dat element
+// bestond alleen in de ArtMart-prijsfilter en is bij de commerce-opschoning
+// verdwenen, waardoor het bestand op iedere hard load een TypeError
+// ("Cannot read properties of null (reading 'nodeName')") gooide — op 22/22
+// publieke routes. TC-PK-006 WP6 (fix 5): het bestand wordt alleen nog geladen
+// wanneer zijn init-target daadwerkelijk in de DOM staat. Het vendorbestand
+// zelf en main.js blijven byte-identiek.
+const RANGE_SLIDER_SRC = "/artmart/assets/js/range-slider.js";
+const RANGE_SLIDER_TARGET = "slider-range";
+
 const VENDOR_SCRIPTS = [
   "/artmart/assets/js/jquery-3.7.1.min.js",
   "/artmart/assets/js/popper.min.js",
@@ -52,6 +63,7 @@ export function loadVendors(): Promise<void> {
   if (vendorPromise) return vendorPromise;
   vendorPromise = (async () => {
     for (const src of VENDOR_SCRIPTS) {
+      if (src === RANGE_SLIDER_SRC && !document.getElementById(RANGE_SLIDER_TARGET)) continue;
       await appendScript(src);
     }
   })();

@@ -310,3 +310,19 @@ html.dark .artmart-scope .top-content a,
 .artmart-scope .accordion-collapse.collapsing {
   visibility: visible;
 }
+
+/* ============================================================
+   TC-PK-007 WP4 (P4) — Zoekbalk-placeholder netjes afkappen <360px.
+   STRUCTURELE regel (GEEN dark-mode-kleurregel) — buiten de WP3-
+   kleurwaiver, expliciet gemeld aan Delroy. Op zeer smalle schermen
+   liep de placeholder buiten het zoekveld; hier klemmen we hem met
+   ellipsis binnen de scope. ============================================================ */
+@media (max-width: 359.98px) {
+  .artmart-scope .search-area form .form-inner input,
+  .artmart-scope .topbar .search-area input,
+  .artmart-scope .sidebar-area .wp-block-search__input {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

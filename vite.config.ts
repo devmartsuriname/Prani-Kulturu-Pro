@@ -7,6 +7,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // TC-PK-011 WP1 — pin the Nitro build target to a standalone Node server for
+  // Hostinger (Node 22). Supported wrapper option (forwarded to nitro/vite);
+  // NOT a second Nitro plugin. Overrides the wrapper's default cloudflare-module
+  // preset outside a Lovable build. Proof: `.output/nitro.json` reports
+  // preset "node_server", with `.output/server/index.mjs` + `.output/public`.
+  nitro: { preset: "node_server" },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

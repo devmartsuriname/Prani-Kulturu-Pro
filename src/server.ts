@@ -44,12 +44,33 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+// TC-PK-011 WP2 (besluit D-20; Delroy-waiver 2026-07-23 op server.ts buiten de
+// admin.tsx-scope) — markeer elke `/admin`-respons niet-indexeerbaar met de
+// HTTP-header `X-Robots-Tag: noindex, nofollow`. De admin-route geeft server-side
+// een echte 404 (zie `src/routes/admin.tsx`), maar TanStack zendt bij een
+// notFound-throw de route-`head`/`headers` niet uit; deze edge-prefixcheck dekt
+// daarom `/admin` én alle `/admin/*` responses consistent. Exacte match op `/admin`
+// plus prefix `/admin/` voorkomt vals-positieven als `/administrator`.
+function tagAdminResponseNoindex(request: Request, response: Response): Response {
+  const { pathname } = new URL(request.url);
+  if (pathname !== "/admin" && !pathname.startsWith("/admin/")) return response;
+
+  const headers = new Headers(response.headers);
+  headers.set("X-Robots-Tag", "noindex, nofollow");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+      return tagAdminResponseNoindex(request, normalized);
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

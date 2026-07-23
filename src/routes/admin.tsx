@@ -1,4 +1,4 @@
-import { Outlet, createFileRoute } from "@tanstack/react-router";
+import { Outlet, createFileRoute, notFound } from "@tanstack/react-router";
 
 /**
  * Devmart Admin layout route.
@@ -11,6 +11,18 @@ import { Outlet, createFileRoute } from "@tanstack/react-router";
  *     `.app-wrapper` still owns the viewport.
  */
 export const Route = createFileRoute("/admin")({
+  // TC-PK-011 WP2 (besluit D-20) — de admin is pre-deploy een dataloze preview en
+  // mag niet publiek bereikbaar zijn. SSR `beforeLoad` gooit vóór render een echte
+  // 404 (geen redirect-maskering), zodat `/admin` én `/admin/*` met status 404
+  // antwoorden zonder de admin-UI te renderen. De `robots, noindex, nofollow`-meta
+  // in `head` blijft behouden. De `X-Robots-Tag`-header op de 404-respons wordt op
+  // edge-niveau in `src/server.ts` gezet (TanStack zendt bij een notFound-throw de
+  // route-`head`/`headers` niet uit). Volledige sessie-/rol-auth volgt in Fase 5.3.
+  // Darkone-bestanden onder `public/admin/**` en de admin-UI-code blijven
+  // ongewijzigd; geen basic-auth/credentials.
+  beforeLoad: () => {
+    throw notFound();
+  },
   head: () => ({
     meta: [{ name: "robots", content: "noindex, nofollow" }],
     links: [

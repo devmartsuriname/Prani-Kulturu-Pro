@@ -290,3 +290,23 @@ html.dark .artmart-scope .top-content a,
 .artmart-scope.dark .top-content a {
   color: var(--title-color);
 }
+
+/* ============================================================
+   TC-PK-007 WP5 (P5) — FAQ-accordeon zichtbaarheid.
+   STRUCTURELE regel (GEEN dark-mode-kleurregel) — buiten de WP3-
+   kleurwaiver, expliciet gemeld aan Delroy. Noodzakelijk voor
+   acceptatietest 4 (zichtbare antwoorden).
+
+   Oorzaak: de app-build (Tailwind, admin/shadcn) genereert de utility
+   `.collapse { visibility: collapse }`. Die botst met Bootstrap's
+   accordeon-klasse `.collapse` en wint de cascade op het geopende
+   `.accordion-collapse.show`, waardoor het antwoord onzichtbaar wordt
+   (neemt wél ruimte in). De demo heeft geen Tailwind en toont het
+   antwoord correct. Gesloten items blijven `display:none`
+   (`.collapse:not(.show)`), dus deze regel raakt uitsluitend het
+   geopende paneel en laat het open/dicht-gedrag ongemoeid. Scoped tot
+   `.artmart-scope` zodat admin/shadcn ongemoeid blijft. */
+.artmart-scope .accordion-collapse.show,
+.artmart-scope .accordion-collapse.collapsing {
+  visibility: visible;
+}

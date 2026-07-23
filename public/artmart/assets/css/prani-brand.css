@@ -239,3 +239,54 @@
 @media (min-width: 1400px) {
   .main-menu .menu-list { gap: 32px; }
 }
+
+/* ============================================================
+   TC-PK-007 WP3 (P3) — Dark-mode kleurherstel.
+   CSS-waiver: uitsluitend dark-mode KLEURregels. Geen effect-/
+   animatie-CSS. Referentie: ArtMart demo-darkmode (body.dark in
+   style.scss: title #FFF, text #D3D3D3, white-color #171717,
+   section-bg #212121, border #343434).
+
+   Oorzaak: prani-brand mapt de ArtMart-kleurvariabelen op
+   `.artmart-scope` naar vaste licht-thema-waarden (--pk-ink #2C2420,
+   --pk-canvas #FFFFFF). Die declaraties op de diepere `.artmart-scope`
+   overschrijven de `body.dark`-remap uit style.css, waardoor tekst in
+   dark mode donker-op-donker (onleesbaar) blijft. Hieronder herstellen
+   we de kleurvariabelen binnen de scope wanneer dark actief is; de
+   sage-green merkkleur (--pk-primary) blijft als accent behouden.
+   ============================================================ */
+body.dark .artmart-scope,
+html.dark .artmart-scope,
+.artmart-scope.dark {
+  /* Spiegelt style.css `body.dark` 1:1 (demo-darkmode = referentie): alleen de
+     "actieve" kleurvariabelen wisselen. De `--dark-*`-varianten en
+     `--dark-white-color` blijven bewust op hun licht-thema-waarde staan —
+     ArtMart's eigen `body.dark .component`-regels gebruiken die als de
+     LICHTE kleur op permanent-donkere vlakken (footer, carousel-nav-svg,
+     thema-switch-actief). Ze hier overschrijven brak juist die onderdelen. */
+  --title-color: #FFFFFF;
+  --title-color-opc: 255, 255, 255;
+
+  --text-color: #D3D3D3;
+  --text-color-opc: 211, 211, 211;
+
+  --white-color: #171717;
+
+  --section-bg-color: #212121;
+  --section-bg-color2: #212121;
+
+  --border-color: #343434;
+  --border-color-opc: 52, 52, 52;
+}
+
+/* prani-brand's basisregel `.artmart-scope a { color: var(--pk-ink) }` maakt
+   losse inline-links donker. Structurele links (nav, footer, kruimelpad) hebben
+   in ArtMart een specifiekere `body.dark`-regel en blijven dus vanzelf licht;
+   kaart-namen op lichte panelen (artist-/auction-card) MOETEN donker blijven.
+   Daarom hier alleen de generieke tekst-links op donkere vlakken lichten —
+   scoped, zodat kaartpanelen ongemoeid blijven. Hover blijft de merkkleur. */
+body.dark .artmart-scope .top-content a,
+html.dark .artmart-scope .top-content a,
+.artmart-scope.dark .top-content a {
+  color: var(--title-color);
+}

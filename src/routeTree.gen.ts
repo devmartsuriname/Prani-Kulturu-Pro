@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MediaRouteImport } from './routes/media'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CertificateRouteImport } from './routes/certificate'
@@ -57,6 +59,11 @@ const SearchRoute = SearchRouteImport.update({
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -65,6 +72,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const MediaRoute = MediaRouteImport.update({
   id: '/media',
   path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -212,8 +224,10 @@ export interface FileRoutesByFullPath {
   '/certificate': typeof CertificateRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/login': typeof LoginRoute
   '/media': typeof MediaRoute
   '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
   '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
@@ -245,8 +259,10 @@ export interface FileRoutesByTo {
   '/certificate': typeof CertificateRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/login': typeof LoginRoute
   '/media': typeof MediaRoute
   '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
   '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
@@ -280,8 +296,10 @@ export interface FileRoutesById {
   '/certificate': typeof CertificateRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/login': typeof LoginRoute
   '/media': typeof MediaRoute
   '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
   '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
@@ -316,8 +334,10 @@ export interface FileRouteTypes {
     | '/certificate'
     | '/contact'
     | '/faq'
+    | '/login'
     | '/media'
     | '/privacy'
+    | '/register'
     | '/search'
     | '/terms'
     | '/wishlist'
@@ -349,8 +369,10 @@ export interface FileRouteTypes {
     | '/certificate'
     | '/contact'
     | '/faq'
+    | '/login'
     | '/media'
     | '/privacy'
+    | '/register'
     | '/search'
     | '/terms'
     | '/wishlist'
@@ -383,8 +405,10 @@ export interface FileRouteTypes {
     | '/certificate'
     | '/contact'
     | '/faq'
+    | '/login'
     | '/media'
     | '/privacy'
+    | '/register'
     | '/search'
     | '/terms'
     | '/wishlist'
@@ -418,8 +442,10 @@ export interface RootRouteChildren {
   CertificateRoute: typeof CertificateRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  LoginRoute: typeof LoginRoute
   MediaRoute: typeof MediaRoute
   PrivacyRoute: typeof PrivacyRoute
+  RegisterRoute: typeof RegisterRoute
   SearchRoute: typeof SearchRoute
   TermsRoute: typeof TermsRoute
   WishlistRoute: typeof WishlistRoute
@@ -466,6 +492,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -478,6 +511,13 @@ declare module '@tanstack/react-router' {
       path: '/media'
       fullPath: '/media'
       preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -691,8 +731,10 @@ const rootRouteChildren: RootRouteChildren = {
   CertificateRoute: CertificateRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  LoginRoute: LoginRoute,
   MediaRoute: MediaRoute,
   PrivacyRoute: PrivacyRoute,
+  RegisterRoute: RegisterRoute,
   SearchRoute: SearchRoute,
   TermsRoute: TermsRoute,
   WishlistRoute: WishlistRoute,
